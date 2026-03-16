@@ -4,6 +4,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-black)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18.2-blue)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-blue)](https://tailwindcss.com/)
 
 A comprehensive, interactive German electrical plate and socket configuration tool built with Next.js 14. This project implements a sophisticated drag-and-drop interface for designing custom electrical plate layouts with real-time validation, responsive design, and precise centimeter-based positioning. It is ideal for learning modern React patterns, canvas-based UIs, and constraint-based validation—suitable for both instruction and hands-on experimentation.
 
