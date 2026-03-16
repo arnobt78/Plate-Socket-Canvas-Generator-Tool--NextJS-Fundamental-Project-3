@@ -1,8 +1,13 @@
-# Plate, Socket & Canvas Generator Tool - Next.js Project (Technical Assessment)
+# Plate, Socket & Canvas Generator Tool - Next.js, TypeScript, TailwindCSS Fundamental Project 3
 
-A comprehensive, interactive German electrical plate and socket configuration tool built with Next.js 14. This project implements a sophisticated drag-and-drop interface for designing custom electrical plate layouts with real-time validation, responsive design, and precise centimeter-based positioning.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18.2-blue)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue)](https://www.typescriptlang.org/)
 
-- **Live-Demo:** [https://plate-socket-generator-tool.vercel.app/](https://plate-socket-generator-tool.vercel.app/)
+A comprehensive, interactive German electrical plate and socket configuration tool built with Next.js 14. This project implements a sophisticated drag-and-drop interface for designing custom electrical plate layouts with real-time validation, responsive design, and precise centimeter-based positioning. It is ideal for learning modern React patterns, canvas-based UIs, and constraint-based validation—suitable for both instruction and hands-on experimentation.
+
+- **Live Demo:** [https://plate-socket-generator-tool.vercel.app/](https://plate-socket-generator-tool.vercel.app/)
 
 ![Screenshot 2025-11-02 at 14 26 49](https://github.com/user-attachments/assets/a6ecf70c-af51-4ab7-954c-e1b2372cd569)
 
@@ -15,30 +20,32 @@ A comprehensive, interactive German electrical plate and socket configuration to
 - [Technology Stack](#️-technology-stack)
 - [Project Structure](#-project-structure)
 - [Installation & Setup](#-installation--setup)
-- [Usage Guide](#-usage-guide)
-- [Technical Implementation](#-technical-implementation)
-- [Task Requirements](#-task-requirements)
-- [Component Architecture](#️-component-architecture)
-- [Key Algorithms](#-key-algorithms)
-- [Development](#-development)
-- [Deployment](#-deployment)
+- [Environment Variables](#-environment-variables)
+- [How to Run & Use](#-how-to-run--use)
+- [Project Walkthrough](#-project-walkthrough)
+- [Routes & Pages](#-routes--pages)
+- [Components & Reusability](#-components--reusability)
+- [Libraries & Dependencies](#-libraries--dependencies)
+- [Functionalities & How It Works](#-functionalities--how-it-works)
+- [API & Backend](#-api--backend)
 - [Keywords](#️-keywords)
-- [Author Information](#-author-information)
+- [Conclusion](#-conclusion)
+- [License](#license)
 
 ---
 
 ## 🎯 Overview
 
-The **R24 Plate & Socket Generator** is a professional-grade web application that allows users to design and visualize electrical plate configurations. Built as a technical assessment project, it demonstrates expertise in:
+The **Plate, Socket & Canvas Generator Tool** is a professional-grade web application that lets users design and visualize electrical plate (Rückwand) and socket group (Steckdosengruppe) configurations. It demonstrates:
 
-- **Real-time interactive design** with drag-and-drop functionality
+- **Real-time interactive design** with drag-and-drop
 - **Precise validation** using geometric algorithms and constraint checking
-- **Responsive design** optimized for desktop, tablet, and mobile devices
-- **State management** with localStorage persistence
+- **Responsive design** for desktop, tablet, and mobile
+- **State persistence** via browser localStorage (no backend required)
 - **Mathematical accuracy** in coordinate transformations and scaling
-- **UX excellence** with live feedback, guidelines, and toast notifications
+- **UX polish** with live guidelines, toasts, and touch support
 
-The application maintains **realistic proportions** between plates (Rückwände) and socket groups (Steckdosengruppen) while ensuring all configurations meet German electrical standards.
+The app keeps **realistic proportions** between plates and socket groups and follows German electrical layout constraints (edge distance, group spacing, anchor point).
 
 ---
 
@@ -46,60 +53,37 @@ The application maintains **realistic proportions** between plates (Rückwände)
 
 ### Core Functionality
 
-- ✅ **Plate Management**: Add, delete, and configure multiple plates with custom dimensions
-- ✅ **Socket Configuration**: Toggle socket mode, configure groups with 1-5 sockets
-- ✅ **Drag-and-Drop**: Intuitive positioning with live guidelines and distance measurements
-- ✅ **Real-time Validation**: Instant feedback for invalid positions with detailed error messages
-- ✅ **Responsive Scaling**: Automatic proportional scaling for all screen sizes
-- ✅ **Touch Support**: Full mobile compatibility with optimized touch interactions
-- ✅ **Zoom Controls**: Canvas zoom in/out/reset for detailed work
-- ✅ **Persistent Storage**: LocalStorage saves configurations automatically
+- ✅ **Plate management** — Add, delete, and set dimensions (width 20–300 cm, height 30–128 cm)
+- ✅ **Socket configuration** — Toggle socket mode, add groups with 1–5 sockets, horizontal/vertical
+- ✅ **Drag-and-drop** — Position socket groups with live guidelines and distance (cm) display
+- ✅ **Real-time validation** — Instant feedback and error messages for invalid positions
+- ✅ **Responsive scaling** — Plates and sockets scale proportionally across screen sizes
+- ✅ **Touch support** — Mobile-friendly with expanded touch targets
+- ✅ **Zoom controls** — Canvas zoom in / out / reset
+- ✅ **Persistent storage** — Configurations saved automatically in localStorage
 
-### Visual Features
+### Visual & UX
 
-- 🎨 **Live Guidelines**: Real-time visual feedback during drag operations showing X/Y distances
-- 🎨 **Color-coded Feedback**: Success (green), warning (yellow), error (red) notifications
-- 🎨 **Plate Selection UI**: Visual cards with exact aspect ratios for plate preview
-- 🎨 **Typewriter Title**: Animated loading title for professional presentation
-- 🎨 **Socket Visualization**: High-quality socket images with proper scaling
-
-### UX Enhancements
-
-- 📱 **Mobile-Optimized Sidebar**: Collapsible control panel with burger menu
-- 📱 **Touch Target Expansion**: Larger hit areas for easy mobile interaction
-- 📱 **Scroll Behavior**: Auto-scrolling to selected items in lists
-- 📱 **Centered Single-Plate Mode**: Focused view for detailed socket placement
-- 📱 **Stable Scrollbars**: No content shifting with scrollbar appearance
+- 🎨 Live guidelines during drag (X/Y distances in cm)
+- 🎨 Color-coded toasts (success, warning, error)
+- 🎨 Plate cards with correct aspect ratios
+- 🎨 Typewriter-style welcome screen (first visit only)
+- 🎨 Collapsible sidebar and burger menu on smaller screens
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Frontend Framework
-
-- **Next.js 14.2.0** - React framework with App Router, Server Components, and optimized builds
-- **React 18.2.0** - UI library with hooks and concurrent features
-- **TypeScript 5.4.0** - Type-safe development with strict mode
-
-### Styling & UI
-
-- **Tailwind CSS 3.4.0** - Utility-first CSS framework for responsive design
-- **Lucide React 0.344.0** - Beautiful icon library (900+ icons)
-- **Sonner 2.0.7** - Elegant toast notifications
-- **class-variance-authority 0.7.0** - CSS variant management
-- **tailwind-merge 2.3.0** - Intelligent Tailwind class merging
-- **clsx 2.1.0** - Conditional className utility
-
-### Development Tools
-
-- **ESLint 8.57.0** - Code linting with Next.js config
-- **PostCSS 8.4.35** - CSS processing
-- **Autoprefixer 10.4.18** - Automatic vendor prefixes
-
-### Deployment
-
-- **Vercel** - Optimized hosting for Next.js applications
-- **GitHub** - Version control and repository management
+| Layer         | Technology                                     | Purpose                                 |
+| ------------- | ---------------------------------------------- | --------------------------------------- |
+| Framework     | Next.js 14                                     | App Router, SSR/SSG, image optimization |
+| UI            | React 18                                       | Components, hooks, concurrent features  |
+| Language      | TypeScript 5.4                                 | Type safety, interfaces, strict mode    |
+| Styling       | Tailwind CSS 3.4                               | Utility-first CSS, responsive layout    |
+| Icons         | Lucide React                                   | Icon set used across the UI             |
+| Notifications | Sonner                                         | Toast messages                          |
+| Utilities     | clsx, tailwind-merge, class-variance-authority | Class names and variants                |
+| Linting       | ESLint + eslint-config-next                    | Code quality and Next.js rules          |
 
 ---
 
@@ -108,46 +92,47 @@ The application maintains **realistic proportions** between plates (Rückwände)
 ```bash
 socket-generator/
 ├── app/
-│   ├── globals.css              # Global styles, CSS variables, custom utilities
-│   ├── layout.tsx               # Root layout with metadata, SEO configuration
-│   └── page.tsx                 # Home page (renders SocketGenerator)
+│   ├── globals.css          # Global styles, CSS variables
+│   ├── layout.tsx           # Root layout, metadata/SEO, Toaster
+│   └── page.tsx             # Home page (renders AppWrapper)
 ├── components/
-│   ├── socket-generator.tsx     # Main orchestration component (state, logic, scaling)
-│   ├── plate-canvas.tsx         # Visual canvas renderer (plates, sockets, guidelines)
-│   ├── control-panel.tsx        # User input UI (dimensions, socket config, toggles)
-│   ├── stacked-indicator.tsx    # Stacked socket visualization helper
-│   └── ui/                      # Reusable UI components
-│       ├── button.tsx           # Button component with variants
-│       ├── input.tsx            # Input component with validation states
-│       ├── toggle.tsx           # Toggle switch component
-│       ├── card.tsx             # Card container component
-│       ├── badge.tsx            # Badge/chip component
-│       ├── alert-dialog.tsx     # Modal dialog component
-│       └── toaster.tsx          # Toast notification configuration
+│   ├── app-wrapper.tsx      # Client wrapper: welcome screen vs main app
+│   ├── welcome-screen.tsx   # First-time splash with typewriter
+│   ├── socket-generator.tsx # Main orchestrator (state, drag, scaling)
+│   ├── plate-canvas.tsx     # Canvas: plates, sockets, guidelines, zoom
+│   ├── control-panel.tsx   # Inputs: plates, sockets, positions
+│   ├── stacked-indicator.tsx # Stacked socket count indicator
+│   └── ui/
+│       ├── button.tsx
+│       ├── input.tsx
+│       ├── toggle.tsx
+│       ├── card.tsx
+│       ├── badge.tsx
+│       ├── alert-dialog.tsx
+│       └── toaster.tsx
 ├── lib/
-│   ├── types.ts                 # TypeScript interfaces, validation logic, constants
-│   ├── utils.ts                 # Utility functions (cn, clamp)
+│   ├── types.ts             # Interfaces, constants, validation
+│   ├── utils.ts             # cn(), clamp()
 │   └── hooks/
-│       └── useTypewriter.ts     # Typewriter animation hook
+│       └── useTypewriter.ts # Typewriter animation hook
 ├── public/
-│   ├── favicon.ico              # Site favicon
-│   └── steckdose.webp           # Socket image (CDN source)
-├── Job-Assesment-Task.md        # Original task requirements
-├── next.config.js               # Next.js configuration (image optimization)
-├── tailwind.config.ts           # Tailwind CSS theme, plugins, content paths
-├── tsconfig.json                # TypeScript compiler configuration
-├── package.json                 # Dependencies and scripts
-└── README.md                    # This file
+│   ├── favicon.ico
+│   └── steckdose.webp       # Socket image (optional CDN in next.config)
+├── next.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+├── package.json
+└── README.md
 ```
 
-### Key Files Explained
+**Important files:**
 
-**`app/layout.tsx`** - Root layout with SEO metadata, global providers, and Toaster component
-**`components/socket-generator.tsx`** - Main component managing all state, drag handlers, scaling logic, localStorage
-**`components/plate-canvas.tsx`** - Pure render component for plates, sockets, guidelines, zoom controls
-**`components/control-panel.tsx`** - Input handling for plates, sockets, configuration, validation UI
-**`lib/types.ts`** - Type definitions, validation algorithms, constant values (SOCKET_SIZE, MIN_EDGE_DISTANCE, etc.)
-**`lib/utils.ts`** - Utility functions like `cn()` for class merging and `clamp()` for value limiting
+- **`app/layout.tsx`** — SEO metadata, fonts, global Toaster.
+- **`app/page.tsx`** — Renders `AppWrapper` (server component).
+- **`components/socket-generator.tsx`** — Central state, canvas scaling, drag logic, localStorage sync.
+- **`components/plate-canvas.tsx`** — Renders plates and socket groups, guidelines, zoom.
+- **`components/control-panel.tsx`** — Plate/socket forms, validation UI, lists.
+- **`lib/types.ts`** — `Plate`, `SocketGroup`, validation and dimension helpers.
 
 ---
 
@@ -155,652 +140,290 @@ socket-generator/
 
 ### Prerequisites
 
-- **Node.js**: Version 18.x or higher
-- **npm**: Version 9.x or higher (comes with Node.js)
-- **Git**: For cloning the repository
+- **Node.js** 18.x or higher
+- **npm** 9.x or higher (or yarn/pnpm)
+- **Git** (for cloning)
 
-### Step-by-Step Setup
+### Steps
 
-1. **Clone the Repository**
+1. **Clone and enter the project**
 
    ```bash
    git clone <repository-url>
    cd socket-generator
    ```
 
-2. **Install Dependencies**
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-3. **Run Development Server**
+3. **Run the development server**
 
    ```bash
    npm run dev
    ```
 
-4. **Open in Browser**
+4. **Open in browser**
 
-   ```bash
-   http://localhost:3000
-   ```
+   Open [http://localhost:3000](http://localhost:3000).
 
-### Available Scripts
+### Scripts
 
-```bash
-npm run dev      # Start development server (port 3000)
-npm run build    # Build production bundle
-npm run start    # Start production server
-npm run lint     # Run ESLint
-```
-
-### Environment Variables
-
-**No environment variables required** for this project. The application works entirely on the client side with localStorage for persistence.
-
-**Note**: If deploying to Vercel, no additional configuration is needed. The `next.config.js` is already configured for image optimization.
+| Command         | Description                     |
+| --------------- | ------------------------------- |
+| `npm run dev`   | Start dev server (default 3000) |
+| `npm run build` | Production build                |
+| `npm run start` | Run production server           |
+| `npm run lint`  | Run ESLint (Next.js config)     |
 
 ---
 
-## 📖 Usage Guide
+## 🔐 Environment Variables
 
-### Getting Started
+**You do not need any environment variables to run this project.** It works entirely in the browser with localStorage for persistence. There is no `.env` file in the repository.
 
-1. **Initial State**: The app loads with 2 default plates (151.5x36.8 cm and 200x100 cm)
-2. **Plate View**: Multiple plates display side-by-side with proportional scaling
-3. **Socket Toggle**: Click "Steckdosen" toggle to enable socket mode
+**Optional (if you extend the app later):**
 
-### Plate Management (Section 1)
-
-**Adding a Plate**
-
-- Click the "+ Neue Rückwand" button
-- A new plate is created with default dimensions (100x60 cm)
-
-**Modifying Dimensions**
-
-- Enter width (20-300 cm) and height (30-128 cm) in input fields
-- Values are automatically clamped to valid ranges
-- Plate auto-scales in canvas
-
-**Deleting a Plate**
-
-- Click trash icon on any plate card
-- Minimum 1 plate must remain (validation enforced)
-- All socket groups on deleted plate are removed
-
-**Mobile**: Use the burger menu (☰) to toggle the sidebar
-
-### Socket Configuration (Section 2)
-
-**Enabling Socket Mode**
-
-- Toggle "Steckdosen" switch
-- First eligible plate (≥40x40 cm) receives default socket group
-
-**Selecting Plate**
-
-- Choose plate from "Wähle die Rückwand für die Steckdose" dropdown
-- Only plates ≥40x40 cm are eligible
-
-**Configuring Socket Group**
-
-- **Anzahl**: Select 1-5 sockets per group
-- **Richtung**: Choose horizontal or vertical arrangement
-- **Position X**: Distance from left edge (in cm)
-- **Position Y**: Distance from bottom edge (in cm)
-
-**Adding Socket Groups**
-
-- Click "+ Steckdosengruppe hinzufügen" button
-- Auto-positioned at first valid location
-- Must meet all constraints (edges, other groups)
-
-**Viewing Socket Groups (Section 3)**
-
-- Lists all configured socket groups
-- Shows plate dimensions and cost (if applicable)
-- Click "Anzeigen" to focus on specific group
-- Click trash to delete
-
-### Drag-and-Drop Positioning
-
-**Desktop**
-
-- Click and drag any socket group on canvas
-- Live guidelines appear showing X/Y distances
-- Release to validate and save
-
-**Mobile/Touch**
-
-- Touch and drag socket group
-- Expanded touch targets (20px padding) for easier interaction
-- Same guidelines and validation
-
-**Validation During Drag**
-
-- Real-time checks for edge distances (≥3 cm)
-- Real-time checks for group distances (≥4 cm)
-- Visual feedback if position invalid
-- Toast notification for violations
-
-**After Drag**
-
-- Valid position: Socket stays in new location
-- Invalid position: Snaps back to previous location
-- Success toast confirms saved position
-
-### Canvas Controls
-
-**Zoom In**: Click "+" button (top-right)
-**Zoom Out**: Click "-" button
-**Reset**: Click "↻" button
-
-**Single-Plate Mode**
-
-- When socket mode ON and plate selected
-- Canvas shows only that plate, enlarged and centered
-- Optimized for detailed positioning
-
-**Multi-Plate Mode**
-
-- Shows all plates side-by-side
-- Horizontal scrolling if needed
-- Auto-centers if content narrower than viewport
+- If you add a backend or external API, you can create a `.env.local` and add variables such as:
+  - `NEXT_PUBLIC_API_URL` — for a future API base URL
+  - Any other keys your code reads via `process.env`
+- Next.js loads `.env.local` automatically; do not commit secrets. For this current version, **no env vars are required**.
 
 ---
 
-## 🔧 Technical Implementation
+## 📖 How to Run & Use
 
-### Coordinate System
-
-**Bottom-Left Origin**
-
-- Position coordinates measured from bottom-left corner of plate
-- X-axis: Distance from left edge
-- Y-axis: Distance from bottom edge
-- Consistent across rendering, drag, and validation
-
-**Anchor Point System**
-
-- Socket groups anchored at "bottom-left center of first socket"
-- Anchor offset: 3.5 cm from socket edges (center of 7x7 cm socket)
-- This ensures visually intuitive positioning
-
-### Scaling Algorithm
-
-**Single Plate Mode**
-
-- Plate scales to fill 80% of viewport
-- Maintains aspect ratio
-- Centered on screen
-
-**Multi-Plate Mode**
-
-- Calculate total content width: `sum(plate_width × scale) + gaps + padding`
-- If < viewport: Scale to fit with centering offset
-- If ≥ viewport: Scale to max-width with scrolling
-
-**Formula**:
-
-```typescript
-const finalScale = Math.min(
-  availableWidth / totalWidth,
-  availableHeight / totalHeight
-);
-```
-
-### Drag-and-Drop Implementation
-
-**Event Flow**
-
-1. `onMouseDown` / `onTouchStart` → Capture start position and offset
-2. `onMouseMove` / `onTouchMove` → Calculate live position, render guidelines
-3. `onMouseUp` / `onTouchEnd` → Validate position, update state
-
-**Coordinate Conversion**
-
-```typescript
-// Mouse position → Plate coordinates
-const mousePlateX = (mouseX - plateOffsetX) / scale;
-const mousePlateY = plate.height - (mouseY - plateOffsetY) / scale;
-
-// Add anchor offset
-const plateX = mousePlateX + ANCHOR_OFFSET_CM;
-const plateY = mousePlateY - ANCHOR_OFFSET_CM;
-```
-
-**Validation Checks**
-
-- Edge distances: Rectangle collision with plate bounds minus 3 cm
-- Group distances: Euclidean distance between rectangle centers
-- Real-time during drag with instant feedback
-
-### State Management
-
-**React Hooks**
-
-- `useState`: Local component state (plates, sockets, UI state)
-- `useEffect`: Side effects (localStorage sync, canvas resize)
-- `useCallback`: Memoized event handlers
-- `useRef`: DOM refs, persistent values
-
-**localStorage Persistence**
-
-- `socket-generator-plates`: Plate array
-- `socket-generator-socket-groups`: Socket group array
-- `socket-generator-is-editing-socket`: Edit mode flag
-- `socket-generator-socket-toggle`: Toggle state
-
-**Hydration Safety**
-
-- Initialize state with defaults on server and client
-- Load from localStorage in `useEffect` after hydration
-- Prevents React hydration mismatches
+1. **Start the app** — `npm run dev` and open <http://localhost:3000>.
+2. **First visit** — Welcome screen with typewriter animation; it closes automatically or you can wait for it to finish.
+3. **Main screen** — Left: canvas with plates and socket groups. Right (or behind burger menu on mobile): control panel.
+4. **Plates** — Use “+ Neue Rückwand” to add a plate; edit width/height (clamped to 20–300 cm and 30–128 cm). Delete plates (at least one must remain).
+5. **Sockets** — Turn “Steckdosen” ON. Select a plate (≥40×40 cm), set count (1–5), direction (horizontal/vertical), and X/Y in cm. Add groups with “+ Steckdosengruppe hinzufügen”.
+6. **Drag** — On canvas, drag a socket group; guidelines show distances. Invalid positions snap back and show a toast.
+7. **Zoom** — Use + / − / ↻ on the canvas to zoom in, out, or reset.
 
 ---
 
-## 📋 Task Requirements
+## 🧭 Project Walkthrough
 
-This project implements **100% of the specified requirements** from the job assessment task.
+### Entry and layout
 
-### ✅ Initial Plate Generation
+- **`app/page.tsx`** — Default route; renders `AppWrapper`.
+- **`AppWrapper`** — Client component. Reads `localStorage` for “has seen welcome”; shows `WelcomeScreen` once, then `SocketGenerator`.
+- **`app/layout.tsx`** — Wraps all pages with font, global CSS, and Sonner `Toaster`. Metadata (title, description, Open Graph, etc.) is set here for SEO.
 
-- [x] Default plate on load with predefined dimensions
-- [x] Plate scales to fit canvas while maintaining aspect ratio
-- [x] Multiple plates scaled proportionally
-- [x] Visible color contrasting with background
+### Data and state
 
-### ✅ Dimension Representation
+- **Plates** — Array of `{ id, width, height }` in cm. Stored in `socket-generator-plates` in localStorage.
+- **Socket groups** — Array of `{ id, plateId, count, direction, positionX, positionY }`. Stored in `socket-generator-socket-groups`.
+- **Scaling** — Each plate has a scale factor so that all plates fit in the canvas while keeping aspect ratio; socket positions are scaled the same way.
 
-- [x] All sizes in centimeters (cm)
-- [x] 1 cm = 1 unit internally
-- [x] Proportional visual rendering
-- [x] Example: 20x20 cm and 40x40 cm rendered at 1:2 ratio
-- [x] Single plate grows to fit; multiple scaled down to fit
+### Validation (learning focus)
 
-### ✅ Canvas Behavior
+- **Plates** — Width 20–300 cm, height 30–128 cm; at least one plate; only plates ≥40×40 cm can have sockets.
+- **Socket groups** — 1–5 sockets; anchor at bottom-left center of first socket; ≥3 cm from plate edges; ≥4 cm between groups (Euclidean distance). Implemented in `lib/types.ts` (`validateSocketPosition`, `calculateSocketGroupDimensions`, etc.).
 
-- [x] Plates shown side-by-side horizontally
-- [x] Dynamic resize with browser window
-- [x] Recalculation and re-rendering on resize
-- [x] Mobile-friendly with touch support
+### Drag flow
 
-### ✅ Plate Management
-
-- [x] Input width (20-300 cm) and height (30-128 cm)
-- [x] Input clamped to valid limits
-- [x] Plate redrawn on dimension update
-- [x] Sockets removed on resize
-- [x] Add new plates (unlimited)
-- [x] Delete plates (minimum 1 plate must remain)
-
-### ✅ Socket Management
-
-- [x] Socket section toggle ON/OFF
-- [x] All socket groups deleted when OFF
-- [x] One default socket group added when ON (first eligible plate)
-- [x] Plates must be ≥40x40 cm to accept sockets
-- [x] Sockets removed on plate resize
-- [x] No socket groups on invalid plates
-
-### ✅ Socket Group Configuration
-
-- [x] Plate selector (only valid plates)
-- [x] Number selector (1-5 sockets per group)
-- [x] Direction selector (horizontal/vertical)
-- [x] Position inputs (X from left, Y from bottom in cm)
-- [x] Anchor point: bottom-left center of first socket
-
-### ✅ Socket Group Constraints
-
-- [x] Each socket: 7x7 cm
-- [x] Gap between sockets: 0.2 cm
-- [x] Example: 3 horizontal sockets = 21.4 cm wide
-- [x] Minimum 3 cm from plate edges
-- [x] Minimum 4 cm from other socket groups
-- [x] No overlap with plate area or other groups
-- [x] Socket groups cannot be dragged across plates
-
-### ✅ Socket Dragging and Feedback
-
-- [x] Drag or manual input for positioning
-- [x] Two guideline lines during dragging:
-  - [x] From left edge to anchor point
-  - [x] From bottom edge to anchor point
-- [x] Live cm values displayed on lines
-- [x] Drag blocked for invalid positions (visual stays in last valid position)
-- [x] Valid position: keep new position
-- [x] Invalid position: snap back, show error message
-
-### ✅ Validation and Blocking
-
-- [x] Block invalid plate moves with clear message
-- [x] Block invalid positions/overlaps
-- [x] Error when no valid plates exist
-- [x] Visual feedback for all blocked actions
+1. Mouse/touch down on a socket group → store group id and pointer offset.
+2. Move → convert pixel position to plate cm, update “live” position and guideline distances.
+3. Mouse/touch up → call `validateSocketPosition`; if valid, update state and localStorage; if invalid, revert and show toast.
 
 ---
 
-## 🏗️ Component Architecture
+## 🛣️ Routes & Pages
 
-### SocketGenerator (Main Component)
+The app uses the **Next.js App Router** with a single main route:
 
-**Responsibilities**:
+| Route | File           | Description                |
+| ----- | -------------- | -------------------------- |
+| `/`   | `app/page.tsx` | Home; renders `AppWrapper` |
 
-- Global state management (plates, socketGroups, dragState)
-- Canvas scaling calculations
-- Event handlers (drag, resize, localStorage sync)
-- Zoom controls
+There are **no dynamic routes** (e.g. `/plate/[id]`) or **API routes**. All logic is client-side; data lives in React state and localStorage.
 
-**Key Logic**:
+---
 
-```typescript
-// Calculate scale for proportional rendering
-const calculateScale = (plate, availableWidth, availableHeight) => {
-  const widthRatio = availableWidth / plate.width;
-  const heightRatio = availableHeight / plate.height;
-  return Math.min(widthRatio, heightRatio);
-};
+## 🧩 Components & Reusability
 
-// Handle drag events
-const handleSocketMouseMove = (e) => {
-  // Convert mouse coordinates to plate coordinates
-  // Validate position in real-time
-  // Update dragState for visual feedback
-};
+### `AppWrapper`
+
+- **Role:** Chooses between welcome screen and main app; avoids hydration issues by reading localStorage in `useEffect`.
+- **Reuse:** Pattern is reusable for any “first-time vs returning user” flow with a single client gate.
+
+### `WelcomeScreen`
+
+- **Role:** First-time splash with typewriter and optional auto-close.
+- **Reuse:** Use `useTypewriter` and the same localStorage key pattern in other onboarding UIs.
+
+### `SocketGenerator`
+
+- **Role:** Holds all state (plates, socket groups, drag, zoom, panel), computes scaling, handles drag and localStorage.
+- **Reuse:** The structure (state + canvas + panel) can be adapted for other “canvas + form” editors (e.g. simple floor plans, layout tools).
+
+### `PlateCanvas`
+
+- **Role:** Renders plates and socket groups, drag handlers, guidelines, zoom controls. Receives ref for measuring container.
+- **Reuse:** Good reference for any canvas that renders rectangles and draggable items with a bottom-left coordinate system and scaling.
+
+### `ControlPanel`
+
+- **Role:** Plate CRUD, socket form (plate, count, direction, X/Y), list of configured groups, delete confirmations.
+- **Reuse:** Adapt for other “list + form + validation” UIs (different fields, same structure).
+
+### `StackedIndicator`
+
+- **Role:** Visual “stack” for socket count (e.g. 3 circles).
+- **Reuse:** Any small numeric stack or badge visualization.
+
+### `lib/hooks/useTypewriter`
+
+- **Role:** Reveals a string character-by-character with configurable speed and delay.
+- **Reuse:** Drop into any component that needs typewriter text:
+
+```tsx
+const { displayText, isComplete } = useTypewriter({
+  text: "Your message here",
+  speed: 80,
+  delay: 500,
+});
 ```
 
-### PlateCanvas (Render Component)
+### `lib/utils.ts` — `cn()` and `clamp()`
 
-**Responsibilities**:
+- **`cn()`** — Merges Tailwind classes (via clsx + tailwind-merge). Use anywhere you build conditional class names.
+- **`clamp(value, min, max)`** — Clamps numbers. Use for inputs (e.g. dimensions) that must stay in a range.
 
-- Visual rendering of plates and socket groups
-- Drag guidelines with live measurements
-- Zoom controls UI
-- Socket images with Next.js Image optimization
+### UI components (`components/ui/`)
 
-**Key Features**:
+- **Button, Input, Toggle, Card, Badge, AlertDialog, Toaster** — Standard building blocks. Copy the `ui` folder into another Next.js + Tailwind project and reuse as-is or customize.
 
-- Conditional rendering (single vs. multi-plate)
-- Forward ref for DOM access
-- Typewriter animation for title
-- Proper CSS positioning (absolute, bottom-left origin)
+---
 
-### ControlPanel (Input Component)
+## 📦 Libraries & Dependencies
 
-**Responsibilities**:
+### Core
 
-- User input for plate dimensions
-- Socket configuration UI
-- Validation error display
-- Plate/socket selection lists
+- **next** — React framework with App Router, file-based routing, and image optimization.
+- **react** / **react-dom** — UI library and DOM renderer.
 
-**Key Features**:
+### Styling and UI
 
-- Real-time input validation
-- Auto-scrolling to selected items
-- Mobile-responsive layout
-- Toast notifications for actions
+- **tailwindcss** — Utility CSS; configure in `tailwind.config.ts` and `postcss.config.js`.
+- **lucide-react** — Icons (e.g. `Menu`, `X`, `Plus`, `Minus`); import by name.
+- **sonner** — Toasts: `import { toast } from "sonner"`; use `toast.success()`, `toast.error()`, etc.
+- **clsx** — Conditional class names: `clsx("base", condition && "active")`.
+- **tailwind-merge** — Merges Tailwind classes without conflicts; used inside `cn()`.
+- **class-variance-authority (cva)** — Optional variant APIs for components (e.g. button variants).
 
-### lib/types.ts (Type Definitions & Validation)
+### Development
 
-**Interfaces**:
+- **typescript** — Typing and strict checks.
+- **eslint** / **eslint-config-next** — Linting and Next.js rules.
+- **autoprefixer** / **postcss** — CSS pipeline for Tailwind.
 
-```typescript
-interface Plate {
-  id: string;
-  width: number; // 20-300 cm
-  height: number; // 30-128 cm
-}
+**Example — using `cn()` and Sonner:**
 
-interface SocketGroup {
-  id: string;
-  plateId: string;
-  count: number; // 1-5
-  direction: "horizontal" | "vertical";
-  positionX: number; // cm from left
-  positionY: number; // cm from bottom
-}
-```
+```tsx
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 
-**Validation Logic**:
-
-```typescript
-const validateSocketPosition = (
-  socketGroup,
-  positionX,
-  positionY,
-  plate,
-  allSocketGroups
-) => {
-  // 1. Check edge distances (≥3 cm)
-  // 2. Check group distances (≥4 cm, Euclidean)
-  // 3. Return { valid, error, positionX, positionY }
-};
+<div className={cn("p-4", isActive && "bg-blue-100")} />
+<button onClick={() => toast.success("Saved!")}>Save</button>
 ```
 
 ---
 
-## 🧮 Key Algorithms
+## ⚙️ Functionalities & How It Works
 
-### 1. Socket Group Dimension Calculation
+### Plate dimensions and scaling
 
-```typescript
-const calculateSocketGroupDimensions = (count, direction) => {
-  const totalSocketSpace = count * SOCKET_SIZE; // count × 7 cm
-  const gaps = (count - 1) * SOCKET_GAP; // (count-1) × 0.2 cm
-  const totalDimension = totalSocketSpace + gaps;
+- Plate dimensions are in cm. Canvas size is in pixels. For each plate, a scale factor is computed so that:
+  - In single-plate edit mode, the plate fills most of the canvas.
+  - In multi-plate mode, all plates fit side-by-side (with optional centering if total width is less than viewport).
+- Positions (e.g. socket X/Y) are stored in cm and multiplied by the same scale when rendering.
 
-  return direction === "horizontal"
-    ? { width: totalDimension, height: SOCKET_SIZE }
-    : { height: totalDimension, width: SOCKET_SIZE };
-};
-```
+### Socket group dimensions
 
-**Example**: 3 horizontal sockets
+- Each socket is 7×7 cm; gap between sockets 0.2 cm. So for `count` sockets in a group:
+  - Horizontal: width = `count * 7 + (count - 1) * 0.2`, height = 7.
+  - Vertical: height = `count * 7 + (count - 1) * 0.2`, width = 7.
+- Implemented in `lib/types.ts` as `calculateSocketGroupDimensions(count, direction)`.
 
-- `3 × 7 = 21 cm` (socket space)
-- `2 × 0.2 = 0.4 cm` (gaps)
-- **Total width: 21.4 cm** ✅
+### Validation (edge and spacing)
 
-### 2. Euclidean Distance Between Rectangles
+- **Edge distance** — The rectangle of the socket group must stay ≥3 cm from each plate edge. Anchor is at the bottom-left center of the first socket (3.5 cm from socket edges).
+- **Group distance** — The minimum distance between any two groups on the same plate is 4 cm, computed as Euclidean distance between the two rectangles (axis-aligned).
+- **`validateSocketPosition()`** in `lib/types.ts` returns `{ valid, error?, positionX, positionY }`. The UI calls it on “confirm” and on drag end.
 
-```typescript
-const calculateDistance = (r1, r2) => {
-  // r1/r2: { left, right, bottom, top }
-  const hDistance = r1.right < r2.left
-    ? r2.left - r1.right
-    : r2.right < r1.left
-    ? r1.left - r2.right
-    : 0;
+### Coordinate system
 
-  const vDistance = r1.bottom > r2.top
-    ? r1.bottom - r2.top
-    : r2.bottom > r1.top
-    ? r2.bottom - r1.top
-    : 0;
+- **Origin** — Bottom-left of each plate. X increases right, Y increases up.
+- **Anchor** — Socket group position (positionX, positionY) is the bottom-left center of the first socket (3.5 cm from left and bottom of that socket). This is used both in validation and in `PlateCanvas` for positioning.
 
-  return Math.sqrt(hDistance² + vDistance²);
-};
-```
+### localStorage keys
 
-### 3. Multi-Plate Centering
+- `socket-generator-plates` — JSON array of plates.
+- `socket-generator-socket-groups` — JSON array of socket groups.
+- `socket-generator-is-editing-socket` — Whether user is in “editing socket” mode.
+- `socket-generator-socket-toggle` — Whether socket mode is ON.
+- `socket-generator-has-seen-welcome` — Whether to skip the welcome screen.
 
-```typescript
-const shouldCenterPlates = (totalWidth, viewportWidth) => {
-  if (totalWidth < viewportWidth) {
-    const centeringOffset = (viewportWidth - totalWidth) / 2;
-    return { shouldCenter: true, centeringOffset };
-  }
-  return { shouldCenter: false, centeringOffset: 0 };
-};
-```
+State is read in `useEffect` after mount (to avoid hydration mismatch) and written when the user changes plates or socket groups.
 
 ---
 
-## 💻 Development
+## 🔌 API & Backend
 
-### Code Quality
+**This project has no backend and no API routes.** It is a fully client-side application:
 
-**TypeScript Strict Mode**
+- No `app/api/` routes.
+- No server-side database or external HTTP API for the core flow.
+- Data is stored only in the browser via **localStorage**.
 
-- No implicit `any`
-- Null checks enforced
-- Exhaustive type coverage
+If you later add a backend (e.g. to save designs to a server), you would:
 
-**ESLint Configuration**
-
-- Next.js recommended rules
-- React hooks rules
-- Accessibility rules
-
-**Code Organization**
-
-- Modular components
-- Separation of concerns (UI, logic, validation)
-- Extensive inline documentation
-
-### Best Practices
-
-✅ **Component Structure**
-
-- Single responsibility principle
-- Props interfaces for type safety
-- Forward refs where needed
-
-✅ **State Management**
-
-- Minimal state elevation
-- Local state when possible
-- `useCallback` for stability
-
-✅ **Performance**
-
-- Memoized callbacks
-- Conditional rendering
-- Next.js Image optimization
-
-✅ **Accessibility**
-
-- Semantic HTML
-- ARIA labels where needed
-- Keyboard navigation support
-
----
-
-## 🚀 Deployment
-
-### Vercel Deployment
-
-**Automatic Deployment**
-
-1. Push code to GitHub repository
-2. Import project in Vercel dashboard
-3. Vercel auto-detects Next.js configuration
-4. Build and deploy automatically
-
-**Manual Deployment**
-
-```bash
-npm run build
-npm run start
-```
-
-**Environment Configuration**
-
-- No environment variables needed
-- `next.config.js` already configured
-- Image optimization enabled for CDN
-
-### Build Optimization
-
-**Next.js Features**:
-
-- Automatic code splitting
-- Tree shaking
-- Image optimization
-- Static HTML generation where possible
-
-**Bundle Size**:
-
-- Initial load: ~87 kB (shared JS)
-- Home page: ~122 kB (First Load JS)
-- Optimized for mobile networks
+1. Add API routes under `app/api/` (e.g. `app/api/plates/route.ts`).
+2. Optionally add environment variables (e.g. `NEXT_PUBLIC_API_URL` in `.env.local`).
+3. Call those APIs from the client (e.g. in `SocketGenerator`) and keep or replace localStorage as a cache.
 
 ---
 
 ## 🏷️ Keywords
 
-**Technologies**: Next.js, React, TypeScript, Tailwind CSS, Vercel, shadcn/ui, Sonner
+**Technologies:** Next.js, React, TypeScript, Tailwind CSS, Vercel, Sonner, Lucide
 
-**Features**: Drag-and-drop, real-time validation, responsive design, touch support, localStorage, zoom controls
+**Features:** Drag-and-drop, real-time validation, responsive layout, touch support, localStorage, zoom, live guidelines
 
-**Domain**: Electrical design, socket configuration, plate generator, German standards, Rückwand, Steckdose
+**Domain:** Electrical design, socket configuration, plate generator, German standards, Rückwand, Steckdose, Steckdosengruppe
 
-**Concepts**: Coordinate systems, Euclidean distance, geometric algorithms, canvas rendering, state management
+**Concepts:** Coordinate systems, Euclidean distance, geometric validation, canvas rendering, state management, hydration-safe storage
 
-**Skills**: Frontend development, UI/UX design, algorithm implementation, responsive design, mobile optimization
-
----
-
-## 👤 Author Information
-
-**Name**: Arnob Mahmud  
-**Email**: <arnob_t78@yahoo.com>  
-**Portfolio**: [https://arnob-mahmud.vercel.app/](https://arnob-mahmud.vercel.app/)  
-**GitHub**: [https://github.com/arnobt78](https://github.com/arnobt78)
-
-This project was developed as a technical assessment demonstrating proficiency in:
-
-- Modern React development with Next.js
-- Complex algorithm implementation
-- Responsive design and mobile optimization
-- TypeScript type safety and validation
-- Professional code organization and documentation
+**Learning:** Frontend architecture, React hooks, TypeScript interfaces, reusable UI components, constraint-based validation
 
 ---
 
-## 📝 Additional Notes
+## 📝 Conclusion
 
-### Extensibility
+This repository is a complete **Plate, Socket & Canvas Generator** suitable for:
 
-**Potential Enhancements**:
+- **Learning** — Next.js App Router, React state, canvas UIs, validation logic, and localStorage.
+- **Teaching** — Clear separation of layout, canvas, control panel, types, and utilities.
+- **Reuse** — UI components, `useTypewriter`, `cn`/`clamp`, and patterns (welcome screen, scaling, drag) can be reused in other projects.
 
-- Export to PDF/image functionality
-- Socket types selection (different socket styles)
-- Grid snapping for precise alignment
-- Undo/redo functionality
-- Plate templates/presets
-- Collaborative editing (real-time sync)
-
-**Reusable Components**:
-
-- `ControlPanel` → Can be adapted for any configuration UI
-- `PlateCanvas` → Generic canvas renderer for geometric elements
-- Validation logic → Reusable for any constraint-based system
-- `useTypewriter` → Utility hook for animations
-
-### Learning Resources
-
-This project is an excellent learning resource for:
-
-- Next.js App Router architecture
-- React hooks and state management
-- Canvas rendering and coordinate systems
-- Drag-and-drop implementation
-- Geometric algorithms and validation
-- Responsive design patterns
-- TypeScript best practices
+You can extend it with export (e.g. PDF/image), more socket types, grid snapping, undo/redo, or a backend API without changing the core structure described in this README.
 
 ---
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use, modify, and distribute the code as per the terms of the license.
 
 ## Happy Coding! 🎉
 
-Feel free to use this project repository and extend this project further!
+This is an **open-source project** - feel free to use, enhance, and extend this project further!
 
-If you have any questions or want to share your work, reach out via GitHub or my portfolio at [https://arnob-mahmud.vercel.app/](https://arnob-mahmud.vercel.app/).
+If you have any questions or want to share your work, reach out via GitHub or my portfolio at [https://www.arnobmahmud.com](https://www.arnobmahmud.com).
 
 **Enjoy building and learning!** 🚀
 
